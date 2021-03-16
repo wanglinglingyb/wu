@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>向上无缝滚动</title>
+	<style>
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		img {
+			vertical-align: middle;
+		}
+		.box {
+			width: 520px;
+			height: 560px;
+			border: 10px solid;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.box .ims {
+			position: relative;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1" class="box">
+		<ul class="ims" style="top:0;">
+			<li><img src="images/1.jpg" alt="1"></li>
+			<li><img src="images/2.jpg" alt="2"></li>
+			<li><img src="images/3.jpg" alt="3"></li>
+			<li><img src="images/4.jpg" alt="4"></li>
+			<li><img src="images/5.jpg" alt="5"></li>
+		</ul>
+	</div>
+	<script>
+		var box=document.getElementById('box1');
+		var imgs=box.getElementsByClassName('ims')[0];
+		var t=null;
+		var step=5;
+		var num=5;
+		var imgw=520;
+		var imgl=num*imgw;
+		function move(){
+			var top=parseInt(imgs.style.top);
+			if(top==-imgl){
+				top=0;
+			}
+			imgs.style.top=--top+'px';
+		}
+		imgs.innerHTML+=imgs.innerHTML;
+		t=setInterval(move,step);
+	</script>
+</body>
+</html>
